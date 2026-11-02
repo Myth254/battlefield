@@ -44,6 +44,31 @@ export function renderBoard(gameboard, containerElement, { hideShips = false } =
     }
 }
 
+export function bindPlayerBoardClicks(containerElement, handler) {
+  containerElement.addEventListener('click', (e) => {
+    const cell = e.target.closest('.cell');
+    if (!cell) return;
+
+    const row = parseInt(cell.dataset.row, 10);
+    const col = parseInt(cell.dataset.col, 10);
+    handler([row, col]);
+  });
+}
+
+export function bindRotateButtonClick(handler) {
+  const rotateBtn = document.getElementById('rotate-btn');
+  if (rotateBtn) {
+    rotateBtn.addEventListener('click', handler);
+  }
+}
+
+export function updateRotateButtonText(direction) {
+  const rotateBtn = document.getElementById('rotate-btn');
+  if (rotateBtn) {
+    rotateBtn.textContent = `Orientation: ${direction.charAt(0).toUpperCase() + direction.slice(1)}`;
+  }
+}
+
 export function bindEnemyBoardClicks(containerElement, handler) {
     containerElement.addEventListener('click', (e) => {
         const cell = e.target.closest('.cell')
@@ -63,3 +88,12 @@ export function setStatus(message) {
         statusEl.textContent = message
     }
 }
+
+export function bindResetButtonClick(handler) {
+  const resetBtn = document.getElementById('reset-btn');
+  if (resetBtn) {
+    // When the button is clicked, trigger the reset loop handler
+    resetBtn.addEventListener('click', handler);
+  }
+}
+

@@ -1,4 +1,4 @@
-import './style.css'
+import './styles.css'
 import { startGame } from './modules/game'
 
 // TODO (Phase 4): once Ship, Gameboard and Player are tested and working,

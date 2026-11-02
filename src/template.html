@@ -9,15 +9,23 @@
     <h1>Battleship</h1>
     <p id="status">Click a square on the enemy board to attack.</p>
 
-    <main class="boards">
-      <section>
-        <h2>Your fleet</h2>
-        <div id="player-board" class="board"></div>
-      </section>
-      <section>
-        <h2>Enemy waters</h2>
-        <div id="enemy-board" class="board"></div>
-      </section>
-    </main>
+    <div class="controls-container">
+      <!-- Dynamic rotation switch -->
+      <button id="rotate-btn">Orientation: Horizontal</button>
+      <button id="reset-btn" style="margin-left: 10px;">Reset Game</button>
+    </div>
+
+    <div id="boards-container">
+      <div class="board-wrapper">
+        <h2>Your Fleet</h2>
+        <div id="player-board"></div> <!-- Matches playerContainer -->
+      </div>
+      
+      <div class="board-wrapper">
+        <h2>Enemy Waters</h2>
+        <div id="enemy-board"></div> <!-- Matches enemyContainer -->
+      </div>
+    </div>
+
   </body>
 </html>

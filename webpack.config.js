@@ -2,17 +2,17 @@
 import path from "node:path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
-export default {
-  mode: "development",
+export default (_, argv) => ({
+  mode: argv.mode,
   entry: "./src/index.js",
   output: {
     filename: "main.js",
     path: path.resolve(import.meta.dirname, "dist"),
     clean: true,
   },
-  devtool: argv.mode === 'production' ? false : 'eval-source-map',
+  devtool: argv.mode === "production" ? false : "eval-source-map",
   devServer: {
-    static: './dist',
+    static: "./dist",
     watchFiles: ["./src/template.html"],
   },
   plugins: [
@@ -27,13 +27,9 @@ export default {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.html$/i,
-        use: ["html-loader"],
-      },
-      {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
       },
     ],
   },
-};
+});

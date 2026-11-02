@@ -3,26 +3,6 @@ body {
   margin: 2rem;
 }
 
-.boards {
-  display: flex;
-  gap: 3rem;
-  flex-wrap: wrap;
-}
-
-/* 10x10 grid. Each cell is rendered by your DOM module. */
-.board {
-  display: grid;
-  grid-template-columns: repeat(10, 2.25rem);
-  grid-template-rows: repeat(10, 2.25rem);
-  gap: 2px;
-}
-
-.cell {
-  background: #cfe8ff;
-  border: 1px solid #7aa7d6;
-  cursor: pointer;
-}
-
 #boards-container {
   display: flex;
   gap: 40px;
@@ -82,4 +62,54 @@ body {
   margin: 20px 0;
   font-family: sans-serif;
   font-weight: bold;
+}
+
+.controls-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#reset-btn {
+  background-color: #0288d1;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+#reset-btn:hover {
+  background-color: #01579b;
+}
+
+#reset-btn:active {
+  transform: scale(0.98);
+}
+
+#enemy-board.disabled {
+  opacity: 0.5;
+  pointer-events: none; /* Stops user clicks from firing early */
+  cursor: not-allowed;
+}
+
+#rotate-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.2s;
+}
+
+#rotate-btn:hover {
+  background-color: #388e3c;
 }
