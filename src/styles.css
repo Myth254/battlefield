@@ -1,0 +1,35 @@
+body {
+  font-family: system-ui, sans-serif;
+  margin: 2rem;
+}
+
+.boards {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+/* 10x10 grid. Each cell is rendered by your DOM module. */
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 2.25rem);
+  grid-template-rows: repeat(10, 2.25rem);
+  gap: 2px;
+}
+
+.cell {
+  background: #cfe8ff;
+  border: 1px solid #7aa7d6;
+  cursor: pointer;
+}
+
+/* Suggested state classes - add/remove them from your render function */
+.cell.ship {
+  background: #6b7a8f;
+}
+.cell.hit {
+  background: #e5484d;
+}
+.cell.miss {
+  background: #b8c4d0;
+}
