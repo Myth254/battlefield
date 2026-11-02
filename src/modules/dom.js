@@ -13,4 +13,53 @@
 //
 // TODO (Phase 4): setStatus(message) to update #status
 
-export {};
+export function renderBoard(gameboard, containerElement, { hideShips = false } = {}) {
+    containerElement.innerHTML = ''
+
+    const size = gameboard.size || 10
+
+    // Create 100 .cell elements
+    for (let r = 0; r < size; r++) {
+        for (let c = 0; c < size; c++) {
+            const cell = document.createElement('div')
+            cell.classList.add('cell')
+            cell.dataset.row = r
+            cell.dataset.col = c
+
+            const hasShip = gameboard.grid[r][c] !== null
+            const isHit = gameboard.hits.has(`${r},${c}`)
+            const isMiss = gameboard.misses.has(`${r},${c}`)
+
+            if (isHit) {
+                cell.classList.add('hit')
+            } else if (isMiss) {
+                cell.classList.add('miss')
+            } else if (hasShip && !hideShips) {
+                // Only show un-hit ships if hideShips rule is false
+                cell.classList.add('ship')
+            }
+
+            containerElement.appendChild(cell)
+        }
+    }
+}
+
+export function bindEnemyBoardClicks(containerElement, handler) {
+    containerElement.addEventListener('click', (e) => {
+        const cell = e.target.closest('.cell')
+        if (!cell) return
+
+        // read the coordinates and pass them up to the coordinator
+        const row = parseInt(cell.dataset.row, 10)
+        const col = parseInt(cell.dataset.col, 10)
+
+        handler([row, col])
+    })
+}
+
+export function setStatus(message) {
+    const statusEl = document.getElementById('status')
+    if (statusEl) {
+        statusEl.textContent = message
+    }
+}

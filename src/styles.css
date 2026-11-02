@@ -23,13 +23,63 @@ body {
   cursor: pointer;
 }
 
-/* Suggested state classes - add/remove them from your render function */
+#boards-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.board-wrapper {
+  text-align: center;
+}
+
+#player-board, #enemy-board {
+  display: grid;
+  grid-template-columns: repeat(10, 30px);
+  grid-template-rows: repeat(10, 30px);
+  gap: 2px;
+  background-color: #ccc;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+.cell {
+  background-color: #e1f5fe;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cell:hover {
+  background-color: #b3e5fc;
+}
+
 .cell.ship {
-  background: #6b7a8f;
+  background-color: #90a4ae;
 }
+
 .cell.hit {
-  background: #e5484d;
+  background-color: #ef5350;
 }
+
 .cell.miss {
-  background: #b8c4d0;
+  background-color: #b0bec5;
+  position: relative;
+}
+
+.cell.miss::after {
+  content: "•";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #546e7a;
+}
+
+#status {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 20px 0;
+  font-family: sans-serif;
+  font-weight: bold;
 }
