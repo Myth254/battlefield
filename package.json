@@ -1,10 +1,12 @@
 {
+  "homepage": "https://github.io",
   "name": "battleship",
   "version": "1.0.0",
   "description": "Battleship built with TDD - The Odin Project",
   "private": true,
   "main": "src/index.js",
   "scripts": {
+    "deploy": "gh-pages -d dist",
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
     "test": "jest",
@@ -15,6 +17,7 @@
     "@babel/preset-env": "^8.0.7",
     "babel-jest": "^30.5.2",
     "css-loader": "^7.1.5",
+    "gh-pages": "^6.3.0",
     "html-webpack-plugin": "^5.6.8",
     "jest": "^30.5.2",
     "style-loader": "^4.0.0",

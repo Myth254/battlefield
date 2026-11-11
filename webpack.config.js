@@ -18,6 +18,7 @@ export default (_, argv) => ({
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/template.html",
+      filename: 'index.html', 
     }),
   ],
   module: {
